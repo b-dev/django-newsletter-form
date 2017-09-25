@@ -1,0 +1,34 @@
+{% extends "newsletter_form/emails/base.html" %}
+{% load staticfiles i18n %}
+
+{% block content %}
+    <table width="540" align="center" cellspacing="0" cellpadding="0" border="0" class="devicewidthinner">
+        <tbody>
+        <tr>
+            <td width="100%" height="40"></td>
+        </tr>
+        <!-- Spacing -->
+
+        <tr>
+            <td style="font-family: Helvetica, arial, sans-serif; font-size: 11px; color: #95a5a6; text-align:center;line-height: 16px;"
+                st-content="rightimage-paragraph">
+                {% blocktrans %}Benvenuto! D’ora in poi riceverai offerte esclusive, promozioni in anteprima e le news più imortanti.
+                    <br>
+                    <br>
+                    Grazie,
+                    <br>
+                    <span style='color:black;text-align: center'>Il team</span>
+                {% endblocktrans %}
+            </td>
+        </tr>
+        <!-- end of content -->
+        <!-- Spacing -->
+        <tr>
+            <td width="100%" height="20"></td>
+        </tr>
+        <!-- Spacing -->
+
+        </tbody>
+    </table>
+
+{% endblock %}

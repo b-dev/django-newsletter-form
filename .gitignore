@@ -1,0 +1,12 @@
+syntax: glob
+
+.DS_Store
+
+*.swp
+*.pyc
+*.orig
+*.db
+*.log
+*.mo
+
+.idea

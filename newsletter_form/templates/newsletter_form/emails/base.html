@@ -1,0 +1,293 @@
+{% load staticfiles %}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TITLE</title>
+    <style type="text/css">
+        /* Client-specific Styles */
+        #outlook a {
+            padding: 0;
+        }
+
+        /* Force Outlook to provide a "view in browser" menu link. */
+        body {
+            width: 100% !important;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Prevent Webkit and Windows Mobile platforms from changing default font sizes, while not breaking desktop design. */
+        .ExternalClass {
+            width: 100%;
+        }
+
+        /* Force Hotmail to display emails at full width */
+        .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
+            line-height: 100%;
+        }
+
+        /* Force Hotmail to display normal line spacing.  More on that: http://www.emailonacid.com/forum/viewthread/43/ */
+        #backgroundTable {
+            margin: 0;
+            padding: 0;
+            width: 100% !important;
+            line-height: 100% !important;
+        }
+
+        img {
+            outline: none;
+            text-decoration: none;
+            border: none;
+            -ms-interpolation-mode: bicubic;
+        }
+
+        a img {
+            border: none;
+        }
+
+        .image_fix {
+            display: block;
+        }
+
+        p {
+            margin: 0px 0px !important;
+        }
+
+        table td {
+            border-collapse: collapse;
+        }
+
+        table {
+            border-collapse: collapse;
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+
+        /*a {color: #e95353;text-decoration: none;text-decoration:none!important;}*/
+        /*STYLES*/
+        table[class=full] {
+            width: 100%;
+            clear: both;
+        }
+
+        /*################################################*/
+        /*IPAD STYLES*/
+        /*################################################*/
+        @media only screen and (max-width: 640px) {
+            a[href^="tel"], a[href^="sms"] {
+                text-decoration: none;
+                color: #ffffff; /* or whatever your want */
+                pointer-events: none;
+                cursor: default;
+            }
+
+            .mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {
+                text-decoration: default;
+                color: #ffffff !important;
+                pointer-events: auto;
+                cursor: default;
+            }
+
+            table[class=devicewidth] {
+                width: 440px !important;
+                text-align: center !important;
+            }
+
+            table[class=devicewidthinner] {
+                width: 420px !important;
+                text-align: center !important;
+            }
+
+            table[class="sthide"] {
+                display: none !important;
+            }
+
+            img[class="bigimage"] {
+                width: 420px !important;
+                height: 219px !important;
+            }
+
+            img[class="col2img"] {
+                width: 420px !important;
+                height: 258px !important;
+            }
+
+            img[class="image-banner"] {
+                width: 440px !important;
+                height: 106px !important;
+            }
+
+            td[class="menu"] {
+                text-align: center !important;
+                padding: 0 0 10px 0 !important;
+            }
+
+            td[class="logo"] {
+                padding: 10px 0 5px 0 !important;
+                margin: 0 auto !important;
+            }
+
+            img[class="logo"] {
+                padding: 0 !important;
+                margin: 0 auto !important;
+            }
+
+        }
+
+        /*##############################################*/
+        /*IPHONE STYLES*/
+        /*##############################################*/
+        @media only screen and (max-width: 480px) {
+            a[href^="tel"], a[href^="sms"] {
+                text-decoration: none;
+                color: #ffffff; /* or whatever your want */
+                pointer-events: none;
+                cursor: default;
+            }
+
+            .mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {
+                text-decoration: default;
+                color: #ffffff !important;
+                pointer-events: auto;
+                cursor: default;
+            }
+
+            table[class=devicewidth] {
+                width: 280px !important;
+                text-align: center !important;
+            }
+
+            table[class=devicewidthinner] {
+                width: 260px !important;
+                text-align: center !important;
+            }
+
+            table[class="sthide"] {
+                display: none !important;
+            }
+
+            img[class="bigimage"] {
+                width: 260px !important;
+                height: 136px !important;
+            }
+
+            img[class="col2img"] {
+                width: 260px !important;
+                height: 160px !important;
+            }
+
+            img[class="image-banner"] {
+                width: 280px !important;
+                height: 68px !important;
+            }
+
+        }
+    </style>
+</head>
+<body>
+
+<div class="block">
+    <!-- start of header -->
+    <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
+        <tbody>
+        <tr>
+            <td align="center" valign="top">
+                <table border="0" cellpadding="0" cellspacing="0" width="600"
+                       style="background-color:#fdfdfd;border:1px solid #dcdcdc;border-radius:3px!important">
+                    <tbody>
+                    <tr>
+                        <td align="center" valign="top">
+                            <table border="0" cellpadding="0" cellspacing="0" width="600"
+                                   style="background-color:#b4b4b4;border-radius:3px 3px 0 0!important;color:#000000;border-bottom:0;font-weight:bold;line-height:100%;vertical-align:middle;text-align:center;font-family:&quot;Helvetica Neue&quot;,Helvetica,Roboto,Arial,sans-serif">
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <div style="padding:15px 25px;padding-bottom:0">
+{# LOGO #}
+{#                                            <img src=""#}
+{#                                                 style="max-width:100%;    max-width: 140px;border:none;display:inline;font-size:14px;font-weight:bold;min-height:auto;line-height:100%;outline:none;text-decoration:none;text-transform:capitalize"#}
+{#                                                 alt="TailorItaly" class="CToWUd a6T" tabindex="0">#}
+                                            <div class="a6S" dir="ltr"
+                                                 style="opacity: 0.01; left: 908.5px; top: 121px;">
+                                                <div id=":1do" class="T-I J-J5-Ji aQv T-I-ax7 L3 a5q" role="button"
+                                                     tabindex="0" aria-label="Scarica allegato "
+                                                     data-tooltip-class="a1V"
+                                                     data-tooltip="Scarica">
+                                                    <div class="aSK J-J5-Ji aYr"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="padding:15px 0px;display:block;">
+                                        <h1 style="color:white;font-family:&quot;Helvetica Neue&quot;,Helvetica,Roboto,Arial,sans-serif;font-size:24px;font-weight:300;line-height:150%;margin:0;text-align:center">
+                                            {% block titolo_mail %}Welcome{% endblock %}
+                                        </h1>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align="center" valign="top">
+                            {% block content %}{% endblock %}
+                        </td>
+                    </tr>
+
+                    <tr>
+
+                        <td align="center" valign="top">
+
+
+                            <table border="0" cellpadding="10" cellspacing="0" width="600">
+                                <tbody>
+                                <tr>
+
+                                    <td valign="top" style="padding:0">
+
+                                        <table border="0" cellpadding="10" cellspacing="0" width="100%">
+                                            <tbody>
+                                            <tr>
+
+                                                <td colspan="2" valign="middle"
+                                                    style="padding:0px;border:0;color:#737373;font-family:Arial;font-size:12px;line-height:125%;text-align:center">
+
+
+                                                    <p>AZIENDA | VAT 0123</p>
+
+                                                </td>
+
+                                            </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </td>
+
+                                </tr>
+                                </tbody>
+                            </table>
+
+
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
