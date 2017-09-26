@@ -10,3 +10,5 @@ syntax: glob
 *.mo
 
 .idea
+dist
+django_newsletter_form.egg-info
