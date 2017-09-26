@@ -16,4 +16,18 @@ setup(name='django-newsletter-form',
       install_requires=[
           'mailchimp3==2.0.17',
       ],
+      classifiers=[
+          'Environment :: Web Environment',
+          'Framework :: Django',
+          'Framework :: Django :: 1.11',  # replace "X.Y" as appropriate
+          'Intended Audience :: Developers',
+          'License :: OSI Approved :: BSD License',  # example license
+          'Operating System :: OS Independent',
+          'Programming Language :: Python',
+          # Replace these appropriately if you are stuck on Python 2.
+          'Programming Language :: Python :: 2',
+          'Programming Language :: Python :: 2.7',
+          'Topic :: Internet :: WWW/HTTP',
+          'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
+      ],
       zip_safe=False)
