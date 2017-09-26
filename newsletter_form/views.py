@@ -27,7 +27,7 @@ class SubscribeUserView(View):
         if not email:
             return JsonResponse({'results': 'ko', 'message': newsletter_settings.NEWSLETTER_FORM_INVALID_EMAIL_MESSAGE})
 
-        validate_email = EmailValidator(newsletter_settings.NEWSLETTER_FORM_INVLID_EMAIL_MESSAGE, 'invalid')
+        validate_email = EmailValidator(newsletter_settings.NEWSLETTER_FORM_INVALID_EMAIL_MESSAGE, 'invalid')
 
         try:
            validate_email(email)
