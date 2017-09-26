@@ -26,12 +26,19 @@ Quick start
     NEWSLETTER_FORM_MAILCHIMP_API_KEY = ''
     NEWSLETTER_FORM_MAILCHIMP_LIST_ID = ''
 
-5. Load the newsletter_form tag and include the form tag::
+5. Include the css and js in your base template::
+
+    {% static "newsletter_form/css/newsletter_form.css" %}
+
+    {# Must be included after jQuery script #}
+    {% static "newsletter_form/js/newsletter_form.js" %}
+
+6. Load the newsletter_form tag and include the form tag::
 
     {% load newsletter_form_tags %}
     {% newsletter_form %}
 
-5. Optionally. Customize the messages::
+7. Optionally. Customize the messages::
 
     NEWSLETTER_FORM_BUTTON_SUBSCRIBE_TEXT_SENDING = "Invio..."
     NEWSLETTER_FORM_BUTTON_SUBSCRIBE_TEXT = "ISCRIVITI"
