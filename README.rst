@@ -28,10 +28,10 @@ Quick start
 
 5. Include the css and js in your base template::
 
-    {% static "newsletter_form/css/newsletter_form.css" %}
+    <link href="{% static "newsletter_form/css/newsletter_form.css" %}" rel="stylesheet">
 
     {# Must be included after jQuery script #}
-    {% static "newsletter_form/js/newsletter_form.js" %}
+    <script src="{% static "newsletter_form/js/newsletter_form.js" %}"></script>
 
 6. Load the newsletter_form tag and include the form tag::
 

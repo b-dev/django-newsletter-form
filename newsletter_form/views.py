@@ -25,7 +25,7 @@ class SubscribeUserView(View):
         email = request.POST.get('email_newsletter', '')
 
         if not email:
-            return JsonResponse({'results': 'ko', 'message': newsletter_settings.NEWSLETTER_FORM_INVLID_EMAIL_MESSAGE})
+            return JsonResponse({'results': 'ko', 'message': newsletter_settings.NEWSLETTER_FORM_INVALID_EMAIL_MESSAGE})
 
         validate_email = EmailValidator(newsletter_settings.NEWSLETTER_FORM_INVLID_EMAIL_MESSAGE, 'invalid')
 
