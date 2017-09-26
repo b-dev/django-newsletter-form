@@ -1,2 +1,3 @@
 include README.rst
 recursive-include newsletter_form/templates *
+recursive-include newsletter_form/static *
