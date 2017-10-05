@@ -25,6 +25,7 @@ class SubscribeUserView(View):
         email = request.POST.get('email_newsletter', '')
 
         if not email:
+            log.debug(u"[SubscribeUserView] Errore: %s" % newsletter_settings.NEWSLETTER_FORM_INVALID_EMAIL_MESSAGE)
             return JsonResponse({'results': 'ko', 'message': newsletter_settings.NEWSLETTER_FORM_INVALID_EMAIL_MESSAGE})
 
         validate_email = EmailValidator(newsletter_settings.NEWSLETTER_FORM_INVALID_EMAIL_MESSAGE, 'invalid')
@@ -32,6 +33,7 @@ class SubscribeUserView(View):
         try:
            validate_email(email)
         except ValidationError:
+            log.debug(u"[SubscribeUserView] ValidationError: %s" % newsletter_settings.NEWSLETTER_FORM_INVALID_EMAIL_MESSAGE)
             return JsonResponse({'results': 'ko', 'message': newsletter_settings.NEWSLETTER_FORM_INVALID_EMAIL_MESSAGE})
 
         ea, created = EmailAddress.objects.get_or_create(email=email)
@@ -44,6 +46,7 @@ class SubscribeUserView(View):
         success, error_message = self.subscribe_email(request, ea)
 
         if not success:
+            log.debug(u"[SubscribeUserView] subscribe_email -> success = False. Errore: %s" % error_message)
             return JsonResponse({'results': 'ko', 'message': error_message})
 
         response = JsonResponse({'results': 'ok',
@@ -60,8 +63,10 @@ class SubscribeUserView(View):
                 'status': 'subscribed'
             })
         except Exception, e:
+            log.error(u"[SubscribeUserView] Errore durate la chiamata a Mailchimp. Errore: %s" % str(e))
             return False, newsletter_settings.NEWSLETTER_FORM_ERROR_MESSAGE
 
+        log.debug(u"[SubscribeUserView] Chiamata a mailchimp inviata correttamente. Response: %s" % str(response))
         if response['status'] == 'subscribed':
             email_address.mailchimp_recipient_id = response['id']
             email_address.confirmed_at = timezone.now()
