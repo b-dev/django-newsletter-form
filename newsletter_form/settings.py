@@ -15,14 +15,19 @@ NEWSLETTER_FORM_TITLE_MODAL_ERROR_DIALOG = getattr(settings, 'NEWSLETTER_FORM_TI
 NEWSLETTER_FORM_TITLE_MODAL_SUCCESS_DIALOG = getattr(settings, 'NEWSLETTER_FORM_TITLE_MODAL_SUCCESS_DIALOG',
                                                      _("Iscrizione avvenuta con successo"))
 
-NEWSLETTER_FORM_MAIL_SUBJECT_ISCRIZIONE_CONFERMATA = _("Iscrizione confermata")
+NEWSLETTER_FORM_MAIL_SUBJECT_ISCRIZIONE_CONFERMATA = getattr(settings, 'NEWSLETTER_FORM_MAIL_SUBJECT_ISCRIZIONE_CONFERMATA',
+                                                             _("Iscrizione confermata"))
 
-NEWSLETTER_FORM_INVALID_EMAIL_MESSAGE = _(u"Inserire un indirizzo email valido")
-NEWSLETTER_FORM_ALREADY_SUBSCRIBE_MESSAGE = _(u"Sei già iscritto alla nostra newsletter")
-NEWSLETTER_FORM_CONFIRM_SUBSCRIBE_MESSAGE = _(u"ISCRIZIONE CONFERMATA CON SUCCESSO")
-NEWSLETTER_FORM_ERROR_MESSAGE = _(u"Errore durante l'iscrizione alla newsletter. L'amministratore è già stato avvisato.")
+NEWSLETTER_FORM_INVALID_EMAIL_MESSAGE = getattr(settings, 'NEWSLETTER_FORM_INVALID_EMAIL_MESSAGE',
+                                                _(u"Inserire un indirizzo email valido"))
+NEWSLETTER_FORM_ALREADY_SUBSCRIBE_MESSAGE = getattr(settings, 'NEWSLETTER_FORM_ALREADY_SUBSCRIBE_MESSAGE',
+                                                    _(u"Sei già iscritto alla nostra newsletter"))
+NEWSLETTER_FORM_CONFIRM_SUBSCRIBE_MESSAGE = getattr(settings, 'NEWSLETTER_FORM_CONFIRM_SUBSCRIBE_MESSAGE',
+                                                    _(u"ISCRIZIONE CONFERMATA CON SUCCESSO"))
+NEWSLETTER_FORM_ERROR_MESSAGE = getattr(settings, 'NEWSLETTER_FORM_ERROR_MESSAGE',
+                                        _(u"Errore durante l'iscrizione alla newsletter. L'amministratore è già stato avvisato."))
 
-NEWSLETTER_FORM_CONFIRM_EMAIL = False
-NEWSLETTER_FORM_MAILCHIMP_USERNAME = ''
-NEWSLETTER_FORM_MAILCHIMP_API_KEY = ''
-NEWSLETTER_FORM_MAILCHIMP_LIST_ID = ''
+NEWSLETTER_FORM_CONFIRM_EMAIL = getattr(settings, 'NEWSLETTER_FORM_CONFIRM_EMAIL', False)
+NEWSLETTER_FORM_MAILCHIMP_USERNAME = getattr(settings, 'NEWSLETTER_FORM_MAILCHIMP_USERNAME', '')
+NEWSLETTER_FORM_MAILCHIMP_API_KEY = getattr(settings, 'NEWSLETTER_FORM_MAILCHIMP_API_KEY', '')
+NEWSLETTER_FORM_MAILCHIMP_LIST_ID = getattr(settings, 'NEWSLETTER_FORM_MAILCHIMP_LIST_ID', '')
