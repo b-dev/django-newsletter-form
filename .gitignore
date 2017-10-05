@@ -11,4 +11,5 @@ syntax: glob
 
 .idea
 dist
+build
 django_newsletter_form.egg-info
