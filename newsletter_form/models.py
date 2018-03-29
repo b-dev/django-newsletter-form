@@ -1,14 +1,14 @@
 # coding=utf-8
 import logging
-from django.core.mail import EmailMessage
-from django.contrib.sites.models import Site
+
 from django.conf import settings
+from django.contrib.sites.models import Site
+from django.core.mail import EmailMessage
 from django.db import models
+from django.template.loader import render_to_string
 from django.utils import timezone
 from django.utils.crypto import get_random_string
 from django.utils.translation import ugettext_lazy as _
-from django.http import JsonResponse
-from django.template.loader import render_to_string
 from mailchimp3 import MailChimp
 
 from newsletter_form import settings as newsletter_settings
@@ -18,6 +18,8 @@ log = logging.getLogger('newsletter')
 
 class EmailAddress(models.Model):
     email = models.EmailField(max_length=255, unique=True)
+    first_name = models.CharField(max_length=255, blank=True, null=True)
+    last_name = models.CharField(max_length=255, blank=True, null=True)
     key = models.CharField(max_length=40, blank=True, null=True)
 
     set_at = models.DateTimeField(
@@ -37,8 +39,9 @@ class EmailAddress(models.Model):
         return '{}'.format(self.email)
 
     @staticmethod
-    def subscribe(email):
-        email_address, created = EmailAddress.objects.get_or_create(email=email)
+    def subscribe(email, first_name=None, last_name=None):
+        email_address, created = EmailAddress.objects.get_or_create(email=email, defaults={'first_name': first_name,
+                                                                                           'last_name': last_name})
 
         if not created:
             if email_address.is_confirmed:
@@ -47,12 +50,20 @@ class EmailAddress(models.Model):
         client = MailChimp(newsletter_settings.NEWSLETTER_FORM_MAILCHIMP_USERNAME,
                            newsletter_settings.NEWSLETTER_FORM_MAILCHIMP_API_KEY)
 
+        mc_data = {
+            'email_address': email_address.email,
+            'status': 'subscribed'
+        }
+        if first_name or last_name:
+            mc_data['merge_fields'] = {}
+            if first_name:
+                mc_data['merge_fields']['FNAME'] = first_name
+            if last_name:
+                mc_data['merge_fields']['LNAME'] = last_name
+
         try:
-            response = client.lists.members.create(newsletter_settings.NEWSLETTER_FORM_MAILCHIMP_LIST_ID, {
-                'email_address': email_address.email,
-                'status': 'subscribed'
-            })
-        except Exception, e:
+            response = client.lists.members.create(newsletter_settings.NEWSLETTER_FORM_MAILCHIMP_LIST_ID, mc_data)
+        except Exception as e:
             log.error(u"[SubscribeUserView] Errore durate la chiamata a Mailchimp. Errore: %s" % str(e))
             return False, newsletter_settings.NEWSLETTER_FORM_ERROR_MESSAGE
 
@@ -62,15 +73,16 @@ class EmailAddress(models.Model):
             email_address.confirmed_at = timezone.now()
             email_address.save()
 
-            site = Site.objects.get_current()
-            tname = 'newsletter_form/emails/iscrizione_confermata.html'
-            confirmation_email = render_to_string(tname, {'site': site})
+            if newsletter_settings.NEWSLETTER_FORM_SEND_WELCOME_MAIL:
+                site = Site.objects.get_current()
+                tname = 'newsletter_form/emails/iscrizione_confermata.html'
+                confirmation_email = render_to_string(tname, {'site': site})
 
-            mail_subject = _(newsletter_settings.NEWSLETTER_FORM_MAIL_SUBJECT_ISCRIZIONE_CONFERMATA)
+                mail_subject = _(newsletter_settings.NEWSLETTER_FORM_MAIL_SUBJECT_ISCRIZIONE_CONFERMATA)
 
-            msg = EmailMessage(subject=mail_subject, body=confirmation_email, to=[email_address.email])
-            msg.content_subtype = "html"  # Main content is now text/html
-            msg.send()
+                msg = EmailMessage(subject=mail_subject, body=confirmation_email, to=[email_address.email])
+                msg.content_subtype = "html"  # Main content is now text/html
+                msg.send()
             return True, response
         else:
             return False, newsletter_settings.NEWSLETTER_FORM_ERROR_MESSAGE

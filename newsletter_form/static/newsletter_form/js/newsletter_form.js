@@ -39,16 +39,46 @@ $(function () {
     function subscribe_to_newsletter() {
         var button_newsletter = $("#id_button_form_iscrizione_newsletter");
         var email_address = $("#id_email_form_iscrizione_newsletter").val();
-        var div_errore_email_newsletter = $("#id_error_form_iscrizione_newsletter");
+        if (manage_first_name == true) {
+            var first_name = $("#id_first_name_form_iscrizione_newsletter").val();
+        }
+        if (manage_first_name == true) {
+            var last_name = $("#id_last_name_form_iscrizione_newsletter").val();
+        }
+        var div_errore_email_newsletter = $("#id_error_email_form_iscrizione_newsletter");
+        var div_errore_first_name_newsletter = $("#id_error_first_name_form_iscrizione_newsletter");
+        var div_errore_last_name_newsletter = $("#id_error_last_name_form_iscrizione_newsletter");
 
+        div_errore_email_newsletter.hide();
+        div_errore_first_name_newsletter.hide();
+        div_errore_last_name_newsletter.hide();
+
+        var ci_sono_errori = false;
         if (email_address == '') {
             div_errore_email_newsletter.show();
-        } else {
-            div_errore_email_newsletter.hide();
+            ci_sono_errori = true;
+        }
+        if (manage_first_name == true && first_name_mandatory == true && first_name == '') {
+            div_errore_first_name_newsletter.show();
+            ci_sono_errori = true;
+        }
+        if (manage_last_name == true && last_name_mandatory == true && last_name == '') {
+            div_errore_last_name_newsletter.show();
+            ci_sono_errori = true;
+        }
+
+        if (ci_sono_errori == false) {
             button_newsletter.attr("disabled", true);
             button_newsletter.html(text_newsletter_button_disabled);
-            $.post(url_iscrizione_newsletter, {'csrfmiddlewaretoken': csrftoken,
-                                               'email_newsletter': email_address}, subscribe_to_newsletter_success)
+            var data = {'csrfmiddlewaretoken': csrftoken,
+                        'email_newsletter': email_address}
+            if (manage_first_name == true) {
+                data['first_name'] = first_name;
+            }
+            if (manage_last_name == true) {
+                data['last_name'] = last_name;
+            }
+            $.post(url_iscrizione_newsletter, data, subscribe_to_newsletter_success)
         }
     }
 

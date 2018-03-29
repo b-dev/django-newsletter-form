@@ -6,18 +6,38 @@
     var text_newsletter_button_enabled = '{{ text_newsletter_button_enabled }}';
     var title_modal_error_dialog = '{{ title_modal_error_dialog }}';
     var title_modal_success_dialog = '{{ title_modal_success_dialog }}';
+    var manage_first_name = {% if manage_first_name %}true{% else %}false{% endif %};
+    var manage_last_name = {% if manage_last_name %}true{% else %}false{% endif %};
+    var first_name_mandatory = {% if first_name_mandatory %}true{% else %}false{% endif %};
+    var last_name_mandatory = {% if last_name_mandatory %}true{% else %}false{% endif %};
 </script>
 
 <div class="form-iscrizione-newsletter">
     <div class="form-iscrizione-newsletter-input">
         <input id="id_email_form_iscrizione_newsletter" class="input-newsletter form-control" type="text" name="email"
-               placeholder="{% trans 'Inserisci la tua email' %}">
-    </div>
-    <div class="error" id="id_error_form_iscrizione_newsletter" style="display: none; color:red;">
-        {% trans "Inserisci la tua email" %}
+               placeholder="{% trans 'Insert your email' %}">
+        <div class="error" id="id_error_email_form_iscrizione_newsletter" style="display: none; color:red;">
+        {% trans "Insert your email" %}
+        </div>
+
+        {% if manage_first_name %}
+        <input id="id_first_name_form_iscrizione_newsletter" class="input-newsletter form-control" type="text" name="first_name"
+               placeholder="{% trans 'First name' %}">
+        <div class="error" id="id_error_first_name_form_iscrizione_newsletter" style="display: none; color:red;">
+        {% trans "Insert your first name" %}
+        </div>
+        {% endif %}
+
+        {% if manage_last_name %}
+        <input id="id_last_name_form_iscrizione_newsletter" class="input-newsletter form-control" type="text" name="last_name"
+               placeholder="{% trans 'Last name' %}">
+        <div class="error" id="id_error_last_name_form_iscrizione_newsletter" style="display: none; color:red;">
+        {% trans "Insert your last name" %}
+        </div>
+        {% endif %}
     </div>
     <button href="#" class="btn btn-primary"
-            id="id_button_form_iscrizione_newsletter">{% trans "ISCRIVITI ORA" %}</button>
+            id="id_button_form_iscrizione_newsletter">{% trans "SUBSCRIBE NOW" %}</button>
 </div>
 
 <!-- Modal content -->

@@ -1,0 +1,114 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-03-29 12:43+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: models.py:27
+msgid "When the confirmation key expiration was set"
+msgstr ""
+
+#: models.py:31
+msgid "First time this email was confirmed"
+msgstr "Prima volta in cui questa mail e' stata confermata"
+
+#: settings.py:7
+msgid "Send..."
+msgstr "Invio.."
+
+#: settings.py:10
+msgid "SUBSCRIBE"
+msgstr "Iscriviti"
+
+#: settings.py:13
+msgid "Subscription failed"
+msgstr "Iscrizione fallita"
+
+#: settings.py:15
+msgid ""
+"Error during the subscription process. Administrator are already informed"
+msgstr ""
+"Errore durante l'iscrizione alla newsletter. L'amministratore è già stato "
+"avvisato"
+
+#: settings.py:18
+msgid "Subscription confirmed"
+msgstr "Iscrizione avvenuta con successo"
+
+#: settings.py:20
+msgid "Great! From now you'll receive our newsletter!"
+msgstr "D'ora in poi riceverai la nostra newsletter"
+
+#: settings.py:23
+msgid "Subscription to our newsletter confirmed!"
+msgstr "Iscrizione avvenuta con successo"
+
+#: settings.py:26
+msgid "Insert a valid email address"
+msgstr "Inserisci un indirizzo email valido"
+
+#: settings.py:28
+msgid "You're already subscribed to our newsletter"
+msgstr "Sei già iscritto alla nostra newsletter"
+
+#: templates/newsletter_form/emails/iscrizione_confermata.html:15
+msgid ""
+"Welcome! From now you'll receive our newsletter.\n"
+"                    <br>\n"
+"                    <br>\n"
+"                    Thanks,\n"
+"                    <br>\n"
+"                    <span style='color:black;text-align: center'>The team</"
+"span>\n"
+"                "
+msgstr ""
+"Benvenuto! D'ora in poi riceverai la nostra newsletter.\n"
+"                    <br>\n"
+"                    <br>\n"
+"                    Grazie,\n"
+"                    <br>\n"
+"                    <span style='color:black;text-align: center'>Il team</"
+"span>\n"
+"                "
+
+#: templates/newsletter_form/form_iscrizione_newsletter.html:18
+#: templates/newsletter_form/form_iscrizione_newsletter.html:20
+msgid "Insert your email"
+msgstr "Inserisci la tua email"
+
+#: templates/newsletter_form/form_iscrizione_newsletter.html:25
+msgid "First name"
+msgstr "Nome"
+
+#: templates/newsletter_form/form_iscrizione_newsletter.html:27
+msgid "Insert your first name"
+msgstr "Inserisci il tuo nome"
+
+#: templates/newsletter_form/form_iscrizione_newsletter.html:33
+msgid "Last name"
+msgstr "Cognome"
+
+#: templates/newsletter_form/form_iscrizione_newsletter.html:35
+msgid "Insert your last name"
+msgstr "Inserisci il tuo cognome"
+
+#: templates/newsletter_form/form_iscrizione_newsletter.html:40
+msgid "SUBSCRIBE NOW"
+msgstr "ISCRIVITI ORA"
+
+#~ msgid "Inserisci la tua email"
+#~ msgstr "Insert your email"
