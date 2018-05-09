@@ -35,6 +35,12 @@
         {% trans "Insert your last name" %}
         </div>
         {% endif %}
+
+        <input id="id_flag_terms_of_use" class="input-newsletter form-control" type="checkbox" name="flag_terms_of_use">
+        <label for="flag_terms_of_use">{% trans "Please accept our terms of use" %}</label>
+        <div class="error" id="id_error_flag_terms_of_use_form_iscrizione_newsletter" style="display: none; color:red;">
+            {% trans "You have to accept our terms of use!" %}
+        </div>
     </div>
     <button href="#" class="btn btn-primary"
             id="id_button_form_iscrizione_newsletter">{% trans "SUBSCRIBE NOW" %}</button>

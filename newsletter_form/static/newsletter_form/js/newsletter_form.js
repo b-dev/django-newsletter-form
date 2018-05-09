@@ -45,13 +45,17 @@ $(function () {
         if (manage_first_name == true) {
             var last_name = $("#id_last_name_form_iscrizione_newsletter").val();
         }
+        var terms_of_use_checked = $("#id_flag_terms_of_use").prop("checked");
+
         var div_errore_email_newsletter = $("#id_error_email_form_iscrizione_newsletter");
         var div_errore_first_name_newsletter = $("#id_error_first_name_form_iscrizione_newsletter");
         var div_errore_last_name_newsletter = $("#id_error_last_name_form_iscrizione_newsletter");
+        var div_errore_terms_of_use_newsletter = $("#id_error_flag_terms_of_use_form_iscrizione_newsletter");
 
         div_errore_email_newsletter.hide();
         div_errore_first_name_newsletter.hide();
         div_errore_last_name_newsletter.hide();
+        div_errore_terms_of_use_newsletter.hide();
 
         var ci_sono_errori = false;
         if (email_address == '') {
@@ -66,6 +70,10 @@ $(function () {
             div_errore_last_name_newsletter.show();
             ci_sono_errori = true;
         }
+        if (terms_of_use_checked == false) {
+            div_errore_terms_of_use_newsletter.show();
+            ci_sono_errori = true;
+        }
 
         if (ci_sono_errori == false) {
             button_newsletter.attr("disabled", true);
@@ -77,6 +85,10 @@ $(function () {
             }
             if (manage_last_name == true) {
                 data['last_name'] = last_name;
+            }
+            data['flag_terms_of_use'] = ''
+            if(terms_of_use_checked == true) {
+                data['flag_terms_of_use'] = 'on'
             }
             $.post(url_iscrizione_newsletter, data, subscribe_to_newsletter_success)
         }

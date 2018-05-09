@@ -15,6 +15,7 @@ log = logging.getLogger('newsletter')
 class SubscribeUserView(View):
     def post(self, request, *args, **kwargs):
         email = request.POST.get('email_newsletter', '')
+        flag_terms_of_use = request.POST.get('flag_terms_of_use', '')
         first_name = None
         last_name = None
         if newsletter_settings.NEWSLETTER_FORM_MANAGE_FIRST_NAME:
@@ -25,6 +26,10 @@ class SubscribeUserView(View):
         if not email:
             log.debug(u"[SubscribeUserView] Errore: %s" % newsletter_settings.NEWSLETTER_FORM_INVALID_EMAIL_MESSAGE)
             return JsonResponse({'results': 'ko', 'message': newsletter_settings.NEWSLETTER_FORM_INVALID_EMAIL_MESSAGE})
+
+        if not flag_terms_of_use:
+            log.debug(u"[SubscribeUserView] Errore: Flag terms of use not checked" % newsletter_settings.NEWSLETTER_FORM_INVALID_TERMS_OF_USE_MESSAGE)
+            return JsonResponse({'results': 'ko', 'message': newsletter_settings.NEWSLETTER_FORM_INVALID_TERMS_OF_USE_MESSAGE})
 
         validate_email = EmailValidator(newsletter_settings.NEWSLETTER_FORM_INVALID_EMAIL_MESSAGE, 'invalid')
 

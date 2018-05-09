@@ -25,6 +25,8 @@ NEWSLETTER_FORM_MAIL_SUBJECT_ISCRIZIONE_CONFERMATA = getattr(settings, 'NEWSLETT
 
 NEWSLETTER_FORM_INVALID_EMAIL_MESSAGE = getattr(settings, 'NEWSLETTER_FORM_INVALID_EMAIL_MESSAGE',
                                                 _(u"Insert a valid email address"))
+NEWSLETTER_FORM_INVALID_TERMS_OF_USE_MESSAGE = getattr(settings, 'NEWSLETTER_FORM_INVALID_TERMS_OF_USE_MESSAGE',
+                                                _(u"You have to accept our terms of use!"))
 NEWSLETTER_FORM_ALREADY_SUBSCRIBE_MESSAGE = getattr(settings, 'NEWSLETTER_FORM_ALREADY_SUBSCRIBE_MESSAGE',
                                                     _(u"You're already subscribed to our newsletter"))
 
