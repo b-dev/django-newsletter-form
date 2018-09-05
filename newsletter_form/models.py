@@ -39,7 +39,7 @@ class EmailAddress(models.Model):
         return '{}'.format(self.email)
 
     @staticmethod
-    def subscribe(email, first_name=None, last_name=None):
+    def subscribe(email, first_name=None, last_name=None, list_id=newsletter_settings.NEWSLETTER_FORM_MAILCHIMP_LIST_ID):
         email_address, created = EmailAddress.objects.get_or_create(email=email, defaults={'first_name': first_name,
                                                                                            'last_name': last_name})
 
@@ -62,7 +62,7 @@ class EmailAddress(models.Model):
                 mc_data['merge_fields']['LNAME'] = last_name
 
         try:
-            response = client.lists.members.create(newsletter_settings.NEWSLETTER_FORM_MAILCHIMP_LIST_ID, mc_data)
+            response = client.lists.members.create(list_id, mc_data)
         except Exception as e:
             log.error(u"[SubscribeUserView] Errore durate la chiamata a Mailchimp. Errore: %s" % str(e))
             return False, newsletter_settings.NEWSLETTER_FORM_ERROR_MESSAGE

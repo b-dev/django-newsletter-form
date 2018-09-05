@@ -8,7 +8,7 @@ with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(name='django-newsletter-form',
-      version='0.4.0',
+      version='0.4.5',
       description='Simple Django newsletter form for Mailchimp',
       url='http://github.com/b-dev/django-newsletter-form',
       author='Marco Minutoli',
